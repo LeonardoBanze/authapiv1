@@ -10,15 +10,19 @@ import { UserService } from 'src/user/user.service';
 
 import * as bycrypt from 'bcrypt';
 import { Omit } from '@prisma/client/runtime/library';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   @Inject()
   private readonly userService: UserService;
 
+  @Inject()
+  private readonly jwtService: JwtService;
+
   async signIn(
     params: Prisma.UserCreateInput,
-  ): Promise<Omit<User, 'password'>> {
+  ): Promise<{ acess_token: string }> {
     const user = await this.userService.user({ email: params.email });
     if (!user) {
       throw new NotFoundException('User not found');
@@ -29,8 +33,8 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const { password, ...result } = user;
+    const payload = { sub: user.id };
 
-    return result;
+    return { acess_token: await this.jwtService.signAsync(payload) };
   }
 }
