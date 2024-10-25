@@ -1571,6 +1571,7 @@ asynckit@^0.4.0:
   dependencies:
     "@nestjs/common" "^10.0.0"
     "@nestjs/core" "^10.0.0"
+    "@nestjs/jwt" "^10.2.0"
     "@nestjs/platform-express" "^10.0.0"
     "@prisma/client" "^5.21.1"
     authapiv1 "file:"
@@ -2707,6 +2708,11 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
+
+fsevents@^2.3.2, fsevents@~2.3.2, fsevents@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.2:
   version "1.1.2"
